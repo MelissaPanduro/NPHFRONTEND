@@ -40,6 +40,9 @@
       <tr>
         <th class="px-6 py-3 text-lg font-semibold text-blue-900 bg-blue-100">Nombre</th>
         <th class="px-6 py-3 text-lg font-semibold text-blue-900 bg-blue-100">Descripción</th>
+        <th class="px-6 py-3 text-lg font-semibold text-blue-900 bg-blue-100">Unidad de Medida</th>
+        <th class="px-6 py-3 text-lg font-semibold text-blue-900 bg-blue-100">Precio Unitario</th>
+        <th class="px-6 py-3 text-lg font-semibold text-blue-900 bg-blue-100">Categoria</th>
         <th class="px-6 py-3 text-lg font-semibold text-blue-900 bg-blue-100">Estado</th>
         <th class="px-6 py-3 text-lg font-semibold text-blue-900 bg-blue-100">Acciones</th>
       </tr>
@@ -48,6 +51,9 @@
       <tr *ngFor="let product of filteredProducts">
         <td class="px-6 py-4 bg-gray-100">{{ product.nombre }}</td>
         <td class="px-6 py-4 bg-gray-100">{{ product.descripcion }}</td>
+        <td class="px-6 py-4 bg-gray-100">{{ product.unidadMedida }}</td>
+        <td class="px-6 py-4 bg-gray-100">{{ product.precioUnitario }}</td>
+        <td class="px-6 py-4 bg-gray-100">{{ product.categoria }}</td>
         <td class="px-6 py-4 bg-gray-100">{{ product.estado }}</td>
         <td class="px-6 py-4 bg-gray-100">
           <button *ngIf="product.estado === 'activo'" class="bg-yellow-500 text-white px-3 py-1 rounded mr-2" (click)="editProductDetails(product)">Editar</button>
@@ -78,12 +84,16 @@
         <input class="border p-2 w-full rounded" id="description" [(ngModel)]="productForm.descripcion" name="description" required />
       </div>
       <div class="mb-4">
+        <label class="block text-lg font-semibold" for="unidadMedida">Unidad de Medida</label>
+        <input class="border p-2 w-full rounded" id="unidadMedida" [(ngModel)]="productForm.unidadMedida" name="description" required />
+      </div>
+      <div class="mb-4">
         <label class="block text-lg font-semibold" for="price">Precio Unitario</label>
         <input class="border p-2 w-full rounded" id="price" [(ngModel)]="productForm.precioUnitario" name="price" type="number" min="0" required />
       </div>
       <div class="mb-4">
-        <label class="block text-lg font-semibold" for="price">Categoria</label>
-        <input class="border p-2 w-full rounded" id="price" [(ngModel)]="productForm.categoria" name="price" type="number" min="0" required />
+        <label class="block text-lg font-semibold" for="categoria">Categoria</label>
+        <input class="border p-2 w-full rounded" id="categoria" [(ngModel)]="productForm.categoria" name="price" type="text" required />
       </div>
       <div class="flex justify-end">
         <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded mr-2" (click)="closeModal()">Cancelar</button>
