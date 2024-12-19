@@ -58,23 +58,25 @@ export default class DeferOptionsComponent implements OnInit {
     });
   }
 
-    // Filtrar proveedores según estado, nombre y descripción
-    filterProducts(): void {
-      this.filteredProducts = this.products.filter(products => {
-        const matchesStatus = products.estado === (this.isActive ? 'activo' : 'I');
-        const matchesName = products.nombre
-          .toLowerCase()
-          .includes(this.nameFilter.toLowerCase());
-        return matchesStatus && matchesName;
-      });
-    }
-
-
-  // Cambiar el estado del switcher y actualizar la lista filtrada
-  toggleStatus(): void {
-    this.filterProducts(); // Refrescar la lista filtrada
+  filterProducts(): void {
+    this.filteredProducts = this.products.filter(product => {
+      // Asegurarse de que 'nombre' y 'descripcion' no sean null o undefined antes de llamar a toLowerCase
+      const matchesStatus = this.isActive ? product.estado === 'activo' : product.estado === 'inactivo';
+      
+      const matchesName = (product.nombre?.toLowerCase() ?? '').includes(this.nameFilter.toLowerCase());
+      const matchesDescription = (product.descripcion?.toLowerCase() ?? '').includes(this.descriptionFilter?.toLowerCase() ?? '');
+  
+      return matchesStatus && matchesName && matchesDescription;
+    });
+    console.log('Productos filtrados:', this.filteredProducts); // Debug
   }
-
+  
+  
+  toggleStatus(): void {
+    this.filterProducts(); // Filtrar productos según el estado
+  }
+  
+  
   // Activar un producto
   activateProduct(id: number): void {
     this.productService.restoreProducto(id).subscribe({

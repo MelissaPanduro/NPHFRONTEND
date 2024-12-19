@@ -17,22 +17,23 @@
   </div>
 
   <!-- Switcher de estado -->
-  <div class="mb-4 flex items-center">
-    <label for="statusSwitcher" class="mr-3 text-lg font-semibold">Estado:</label>
-    <div class="relative inline-block w-12 mr-2 align-middle select-none">
-      <input
-        type="checkbox"
-        id="statusSwitcher"
-        [(ngModel)]="isActive"
-        (change)="toggleStatus()"
-        class="toggle-input absolute block w-6 h-6 rounded-full bg-white border-2 appearance-none cursor-pointer"
-      />
-      <span class="toggle-label block overflow-hidden h-6 rounded-full" [ngClass]="isActive ? 'bg-green-500' : 'bg-red-500'"></span>
-    </div>
-    <span class="ml-2 font-weight-bold" [ngClass]="isActive ? 'text-green-500' : 'text-red-500'">
-      {{ isActive ? 'Activo' : 'Inactivo' }}
-    </span>
+<div class="mb-4 flex items-center">
+  <label for="statusSwitcher" class="mr-3 text-lg font-semibold">Estado:</label>
+  <div class="relative inline-block w-12 mr-2 align-middle select-none">
+    <input
+      type="checkbox"
+      id="statusSwitcher"
+      [(ngModel)]="isActive"
+      (change)="toggleStatus()"
+      class="toggle-input absolute block w-6 h-6 rounded-full bg-white border-2 appearance-none cursor-pointer"
+    />
+    <span class="toggle-label block overflow-hidden h-6 rounded-full" [ngClass]="isActive ? 'bg-green-500' : 'bg-red-500'"></span>
   </div>
+  <span class="ml-2 font-weight-bold" [ngClass]="isActive ? 'text-green-500' : 'text-red-500'">
+    {{ isActive ? 'activo' : 'inactivo' }}
+  </span>
+</div>
+
 
   <!-- Tabla de productos -->
   <table class="min-w-full text-center border-separate" style="border-spacing: 0 10px;">
@@ -58,7 +59,7 @@
         <td class="px-6 py-4 bg-gray-100">
           <button *ngIf="product.estado === 'activo'" class="bg-yellow-500 text-white px-3 py-1 rounded mr-2" (click)="editProductDetails(product)">Editar</button>
           <button *ngIf="product.estado === 'activo' && product.idProducto !== undefined" class="bg-red-500 text-white px-3 py-1 rounded" (click)="inactivateProduct(product.idProducto)">Eliminar</button>
-          <button *ngIf="product.estado === 'Inactivo' && product.idProducto !== undefined" class="bg-green-500 text-white px-3 py-1 rounded mr-2" (click)="activateProduct(product.idProducto)">Restaurar</button>
+          <button *ngIf="product.estado === 'inactivo' && product.idProducto !== undefined" class="bg-green-500 text-white px-3 py-1 rounded mr-2" (click)="activateProduct(product.idProducto)">Restaurar</button>
         </td>
       </tr>
     </tbody>
