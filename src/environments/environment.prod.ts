@@ -1,6 +1,6 @@
+// environment.prod.ts (Producción - Kubernetes)
 export const environment = {
-    apiUrl: 'http://localhost:3000'
-    //apiUrl: 'https://reimagined-space-barnacle-56ww5qww6vxh4564-8080.app.github.dev/api/queries/active'
-};
+    production: true,
+    apiUrl: 'https://supreme-space-guacamole-7vrx775qpr96hr97x-8085.app.github.dev/api/productos' // URL de la API en Kubernetes
+  };
 
-console.log('API URL:', environment.apiUrl);
