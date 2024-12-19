@@ -27,7 +27,7 @@ export default class DeferOptionsComponent implements OnInit {
   // Producto en edición o creación
   editProduct: Product | null = null;
   productForm: Product = {
-    idProducto: 0,
+    idProducto: undefined,
     nombre: '',
     descripcion: '',
     unidadMedida: '',
@@ -103,14 +103,14 @@ export default class DeferOptionsComponent implements OnInit {
   openModal(): void {
     this.isEditMode = false;
     this.productForm = {
-      idProducto: 0,
+      idProducto: undefined,
       nombre: '',
       descripcion: '',
       unidadMedida: '',
       precioUnitario: 0,
       categoria: '',
       fechaCreacion: '',
-      estado: 'A'
+      estado: 'activo'
     };
     this.isModalOpen = true;
   }

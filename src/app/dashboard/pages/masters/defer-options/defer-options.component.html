@@ -57,8 +57,8 @@
         <td class="px-6 py-4 bg-gray-100">{{ product.estado }}</td>
         <td class="px-6 py-4 bg-gray-100">
           <button *ngIf="product.estado === 'activo'" class="bg-yellow-500 text-white px-3 py-1 rounded mr-2" (click)="editProductDetails(product)">Editar</button>
-          <button *ngIf="product.estado === 'activo'" class="bg-red-500 text-white px-3 py-1 rounded" (click)="inactivateProduct(product.idProducto)">Eliminar</button>
-          <button *ngIf="product.estado === 'Inactivo'" class="bg-green-500 text-white px-3 py-1 rounded mr-2" (click)="activateProduct(product.idProducto)">Restaurar</button>
+          <button *ngIf="product.estado === 'activo' && product.idProducto !== undefined" class="bg-red-500 text-white px-3 py-1 rounded" (click)="inactivateProduct(product.idProducto)">Eliminar</button>
+          <button *ngIf="product.estado === 'Inactivo' && product.idProducto !== undefined" class="bg-green-500 text-white px-3 py-1 rounded mr-2" (click)="activateProduct(product.idProducto)">Restaurar</button>
         </td>
       </tr>
     </tbody>
