@@ -85,16 +85,40 @@
       </div>
       <div class="mb-4">
         <label class="block text-lg font-semibold" for="unidadMedida">Unidad de Medida</label>
-        <input class="border p-2 w-full rounded" id="unidadMedida" [(ngModel)]="productForm.unidadMedida" name="description" required />
+        <select 
+          class="border p-2 w-full rounded" 
+          id="unidadMedida" 
+          [(ngModel)]="productForm.unidadMedida" 
+          name="unidadMedida" 
+          required
+        >
+          <option value="" disabled selected>Seleccione una unidad</option>
+          <option value="Plancha">Plancha</option>
+          <option value="Kilogramo">Kilogramo</option>
+          <option value="Saco">Saco</option>
+        </select>
       </div>
+      
       <div class="mb-4">
         <label class="block text-lg font-semibold" for="price">Precio Unitario</label>
         <input class="border p-2 w-full rounded" id="price" [(ngModel)]="productForm.precioUnitario" name="price" type="number" min="0" required />
       </div>
       <div class="mb-4">
-        <label class="block text-lg font-semibold" for="categoria">Categoria</label>
-        <input class="border p-2 w-full rounded" id="categoria" [(ngModel)]="productForm.categoria" name="price" type="text" required />
+        <label class="block text-lg font-semibold" for="categoria">Categoría</label>
+        <select 
+          class="border p-2 w-full rounded" 
+          id="categoria" 
+          [(ngModel)]="productForm.categoria" 
+          name="categoria" 
+          required
+        >
+          <option value="" disabled selected>Seleccione una categoría</option>
+          <option value="Huevos">Huevos</option>
+          <option value="Carne">Carne</option>
+          <option value="Abono">Abono</option>
+        </select>
       </div>
+      
       <div class="flex justify-end">
         <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded mr-2" (click)="closeModal()">Cancelar</button>
         <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">{{ isEditMode ? 'Actualizar' : 'Agregar' }}</button>
